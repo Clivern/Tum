@@ -121,7 +121,9 @@ def models(
     ]
 
     total = len(matching_models)
-    selected_models = matching_models[offset:] if show_all else matching_models[offset : offset + limit]
+    selected_models = (
+        matching_models[offset:] if show_all else matching_models[offset : offset + limit]
+    )
 
     if not selected_models:
         click.echo("No matching models found.", err=True)
