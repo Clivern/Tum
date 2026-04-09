@@ -1,0 +1,41 @@
+[project]
+name = "tum"
+version = "0.0.1"
+description = "Run OpenAI Compatible LLM Servers Locally"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.1.0",
+    "fastapi>=0.115.0",
+    "mlx-lm>=0.19.0",
+    "uvicorn>=0.32.0",
+]
+
+[project.scripts]
+tum = "tum.cli:main"
+tum-mlx = "tum.cli:mlx"
+tum-models = "tum.cli:models"
+tum-serve = "tum.cli:serve"
+
+[dependency-groups]
+dev = [
+    "httpx2>=0.1.0",
+    "pytest>=8.0.0",
+    "ruff>=0.9.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tum"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
